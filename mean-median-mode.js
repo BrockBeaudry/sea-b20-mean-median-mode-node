@@ -1,13 +1,10 @@
-var numbers = [];
-
 // Parse the numbers from the command line arguments.
-for (var i = 2; i < process.argv.length; i++) {
-    numbers.push(+process.argv[i]);
-}
+var numbers = process.argv.splice(2).map(Number);
 
 // Sort in ascending order.
 numbers.sort(function (a, b) { return a - b; });
 
+console.log(numbers);
 
 console.log('Mean: ' + mean(numbers) + '\nMedian: ' + median(numbers) + 
     '\nMode: ' + mode(numbers));
