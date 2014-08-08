@@ -28,8 +28,7 @@ function median(numbers) {
     if(numbers.length % 2 === 0) {
         // Find the median by averaging the two middle numbers.
         return ((numbers[middle] + numbers[middle + 1]) / 2)
-    }
-    else {
+    } else {
         return numbers[middle];
     }
 }
