@@ -4,8 +4,6 @@ var numbers = process.argv.splice(2).map(Number);
 // Sort in ascending order.
 numbers.sort(function (a, b) { return a - b; });
 
-console.log(numbers);
-
 console.log('Mean: ' + mean(numbers) + '\nMedian: ' + median(numbers) + 
     '\nMode: ' + mode(numbers));
 
@@ -41,10 +39,12 @@ function mode(numbers) {
 
     numbers.forEach(function(number) {
         // Initialze the number count to 0, then increment it after subsequent hits.
-        bucket[number] >= 0 ? bucket[number]++ : bucket[number] = 0;
+        // Following line from: github.com/toastynerd
+        bucket[number] = (bucket[number] ? bucket[number] : 0) + 1;
 
-        if(bucket[number] > maxCount)
+        if(bucket[number] > maxCount) {
             result = bucket[number];
+        }
     });
 
     return result || false;
